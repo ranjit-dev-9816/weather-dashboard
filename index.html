@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather App</title>
+<style>
+body {
+    text-align: center;
+    font-family: Arial;
+    background: #0ea5e9;
+    color: white;
+}
+input, button {
+    padding: 10px;
+    margin: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌦️ Weather App</h1>
+
+<input type="text" id="city" placeholder="Enter city">
+<button onclick="getWeather()">Search</button>
+
+<h2 id="result"></h2>
+<h3 id="suggestion"></h3>
+
+<script>
+function getWeather() {
+    let city = document.getElementById("city").value;
+
+    let temp = Math.floor(Math.random() * 40);
+    let weatherTypes = ["Sunny", "Rainy", "Cloudy"];
+    let weather = weatherTypes[Math.floor(Math.random() * 3)];
+
+    document.getElementById("result").innerText =
+        city + " | Temp: " + temp + "°C | " + weather;
+
+    generateSuggestion(temp, weather);
+}
+
+function generateSuggestion(temp, weather) {
+    let suggestion = "";
+
+    if(weather === "Rainy") {
+        suggestion = "Carry umbrella ☔";
+    } 
+    else if(temp > 35) {
+        suggestion = "Stay hydrated 💧";
+    } 
+    else {
+        suggestion = "Enjoy your day 😎";
+    }
+
+    document.getElementById("suggestion").innerText = suggestion;
+}
+</script>
+
+</body>
+</html>
